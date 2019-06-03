@@ -28,7 +28,7 @@ def setup():
   # Step 2, accept lower limit from form, display upper limit
     elif request.form["step"] == "occasion":
         tripSettings[1] = (request.form['1'])
-        return render_template("setup.html", background="none", step="occasion", name="What's the occasion?", number=tripSettings[0])
+        return render_template("setup.html", background="none", step="occasion", name="What's the occasion?", number=tripSettings[1])
 
   # Step 3, accept lower+upper limits from form, display random number
     elif request.form["step"] == "dietaryRestrictions":

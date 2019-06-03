@@ -670,3 +670,9 @@ label {
 .mapdiv {
   width: 100vw;
   height: 500px; }
+
+#back {
+  margin-top: 250px; }
+
+.totalDisplay {
+  color: #111; }

@@ -60,6 +60,7 @@
       <!-- Pick a lower limit: <input type="text" name="lowerlim"><br> -->
       <input type="hidden" name="step" value="occasion">
       <!-- <input type="submit" value="Next"> -->
+      <input type="button" id="back" value="Back" onclick="window.history.back()" />
       </form>
     {% elif step == "occasion" %}
       <h2>{{ name }}</h2>
@@ -109,7 +110,7 @@
       <input type="hidden" name="step" value="dietaryRestrictions">
       <!-- <input type="submit" value="Generate"> -->
       </form>
-      <input type="button" value="Back" onclick="window.history.back()" />
+      <input type="button" id="back" value="Back" onclick="window.history.back()" />
     {% elif step == "dietaryRestrictions" %}
       <h2>{{ name }}</h2>
       <form action="{{ url_for('setup') }}" method="post">
@@ -163,8 +164,9 @@
       <input type="hidden" name="step" value="numPeople">
       <input type="hidden" name="step" value="results">
       <!-- <input type="submit" value="Generate"> -->
+      <input type="button" id="back" value="Back" onclick="window.history.back()" />
       </form>
-      <input type="button" value="Back" onclick="window.history.back()" />
+
       {% elif step == "numPeople" %}
         <h2>{{ name }}</h2>
         <form action="{{ url_for('setup') }}" method="post">
@@ -192,12 +194,14 @@
         <!-- <input type="hidden" name="1" class='card-input-element' > -->
         <input type="hidden" name="step" value="results">
         <!-- <input type="submit" value="Generate"> -->
-        </form>
         <input type="button" value="Back" onclick="window.history.back()" />
+        </form>
+
       {% elif step == "results" %}
         <h2>{{ name }}</h2>
-
-        Your random number is: {{number}}.<br>
-        Your region is: {{ region }}. <br>
+        <div class="totalDisplay">
+        Your results are: {{number}}.<br>
+        <!-- Your region is: {{ region }}. <br> -->
+        </div>
     {% endif %}
 {% endblock %}
