@@ -1,0 +1,203 @@
+{% extends "nav.html" %}
+{% block content %}
+    <!-- <h2>Random numbers are fun!</h2> -->
+    {% if step == "chooseCountry" %}
+      <h2>{{ name }}</h2>
+      <form action="{{ url_for('setup') }}" method="post">
+        <div class="wapper" id="map">
+          <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+          <script src="https://www.amcharts.com/lib/3/maps/js/unRegionsHigh.js"></script>
+          <div id="unRegions" class="mapdiv"></div>
+          <input type="hidden" name="region" id="region_field" value="." />
+
+        </div>
+        <script src="/static/js/mapSetup.js"></script>
+        <input type="hidden" name="step" value="tripType">
+        <input type="button" value="Submit" onclick="this.form.submit()" />
+      </form>
+    {% elif step == "tripType" %}
+      <h2>{{ name }}</h2>
+      <form action="{{ url_for('setup') }}" method="post">
+        <div class="wapper">
+          <div class="setup-cards">
+            <label>
+              <input type="radio" name="1" class='card-input-element' value="Solo" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/upload.svg" alt="">
+                <h3>Solo</h3>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="1" class='card-input-element' value="Couple" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/customize.svg" alt="">
+                <h3>Couple</h3>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="1" class='card-input-element' value="Family" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/book.svg" alt="">
+                <h3>Family</h3>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="1" class='card-input-element' value="Friends" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/book.svg" alt="">
+                <h3>Friends</h3>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="1" class='card-input-element' value="Friends and Family" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/book.svg" alt="">
+                <h3>Friends and Family</h3>
+              </div>
+            </label>
+          </div>
+        </div>
+      <!-- Pick a lower limit: <input type="text" name="lowerlim"><br> -->
+      <input type="hidden" name="step" value="occasion">
+      <!-- <input type="submit" value="Next"> -->
+      </form>
+    {% elif step == "occasion" %}
+      <h2>{{ name }}</h2>
+      <form action="{{ url_for('setup') }}" method="post">
+        <div class="wapper">
+          <div class="setup-cards">
+            <label>
+              <input type="radio" name="2" class='card-input-element' value="Fun" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/upload.svg" alt="">
+                <h3>Just for fun </h3>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="2" class='card-input-element' value="birthday" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/customize.svg" alt="">
+                <h3>Birthday</h3>
+              </div>
+            </label>
+            {% if number == 'Couple' %}
+            <label>
+              <input type="radio" name="2" class='card-input-element' value="Anniversary" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>Anniversary</h3>
+            </div>
+            </label>
+            <label>
+              <input type="radio" name="2" class='card-input-element' value="Honeymoon" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>Honeymoon</h3>
+            </div>
+            </label>
+            {% endif %}
+            <label>
+              <input type="radio" name="2" class='card-input-element' value="Celebration" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>Celebration</h3>
+            </div>
+            </label>
+          </div>
+        </div>
+      <!-- <input type="hidden" name="1" class='card-input-element' > -->
+      <input type="hidden" name="step" value="dietaryRestrictions">
+      <!-- <input type="submit" value="Generate"> -->
+      </form>
+      <input type="button" value="Back" onclick="window.history.back()" />
+    {% elif step == "dietaryRestrictions" %}
+      <h2>{{ name }}</h2>
+      <form action="{{ url_for('setup') }}" method="post">
+        <div class="wapper">
+          <div class="setup-cards">
+            <label>
+              <input type="radio" name="3" class='card-input-element' value="Vegitarian" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/upload.svg" alt="">
+                <h3>Vegitarian </h3>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="3" class='card-input-element' value="Vegan" onchange="this.form.submit()">
+              <div class="about-card">
+                <img src="./assets/img/customize.svg" alt="">
+                <h3>Vegan </h3>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="3" class='card-input-element' value="Allergies" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>Allergies </h3>
+            </div>
+            </label>
+            <label>
+              <input type="radio" name="3" class='card-input-element' value="No Red Meat" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>No Red Meat</h3>
+            </div>
+            </label>
+            <label>
+              <input type="radio" name="3" class='card-input-element' value="No Seafood" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>No Seafood</h3>
+            </div>
+            </label>
+            <label>
+              <input type="radio" name="3" class='card-input-element' value="None" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>None</h3>
+            </div>
+            </label>
+          </div>
+        </div>
+      <!-- <input type="hidden" name="1" class='card-input-element' > -->
+      <input type="hidden" name="step" value="numPeople">
+      <input type="hidden" name="step" value="results">
+      <!-- <input type="submit" value="Generate"> -->
+      </form>
+      <input type="button" value="Back" onclick="window.history.back()" />
+      {% elif step == "numPeople" %}
+        <h2>{{ name }}</h2>
+        <form action="{{ url_for('setup') }}" method="post">
+          <div class="numPeople">
+            <div class="description">
+              <h3>Adults:</h3>
+            </div>
+            <div class="quantity buttons_added">
+              <input type="button" value="-" class="minus">
+              <input type="number" step="1" min="1" max="" name="adultQuantity" value="2" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""             >
+              <input type="button" value="+" class="plus">
+            </div>
+          </div>
+          <div class="numPeople">
+            <div class="description">
+              <h3>Children:</h3>
+            </div>
+            <div class="quantity buttons_added">
+              <input type="button" value="-" class="minus">
+              <input type="number" step="1" min="0" max="" name="childQuantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""             >
+              <input type="button" value="+" class="plus">
+            </div>
+          </div>
+          <input type="button" value="Submit" onclick="this.form.submit()" />
+        <!-- <input type="hidden" name="1" class='card-input-element' > -->
+        <input type="hidden" name="step" value="results">
+        <!-- <input type="submit" value="Generate"> -->
+        </form>
+        <input type="button" value="Back" onclick="window.history.back()" />
+      {% elif step == "results" %}
+        <h2>{{ name }}</h2>
+
+        Your random number is: {{number}}.<br>
+        Your region is: {{ region }}. <br>
+    {% endif %}
+{% endblock %}

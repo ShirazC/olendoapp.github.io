@@ -1,0 +1,20 @@
+{% extends "nav.html" %}
+{% block home_nav %}
+  <div id="responsive-nav" class="responsive-nav">
+    <li><a href="#">ABOUT</a></li>
+    <li><a href="#">FEATURES</a></li>
+    <li><a href="#" class="demo button">DEMO</a></li>
+  </div>
+{% endblock %}
+{% block content %}
+  <article class="">
+    <h1>Olendo</h1>
+    <p>Hyper-personalized Travel</p>
+  </article>
+  <div class="get_demo">
+    <!-- <input type="text" name="FirstName" value="john@example.com" class="email"> -->
+    <a href="{{ url_for('setup') }}" >
+      <button class="submit">Get Started</button>
+    </a>
+  </div>
+{% endblock %}
