@@ -7,6 +7,7 @@ html, body
   // overflow: hidden
   position: relative
   overflow: auto
+  @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap')
 
 body
   height: 100%
@@ -92,15 +93,15 @@ section
     font-size: 26px
     color: #6D7278
 
-  .submit
-    // width: 167px
-    height: 65px
-    font-size: 26px
-    padding: 10px 20px
-    // font-weight: normal
-    background-color: $teal
-    color: white
-    border: none
+.submit
+  // width: 167px
+  height: 65px!important
+  font-size: 26px!important
+  padding: 10px 20px!important
+  // font-weight: normal
+  background-color: $teal!important
+  color: white!important
+  border: none!important
     // margin: auto
 
 .main-nav
@@ -294,17 +295,24 @@ label
   .setup-cards
     display: grid
     justify-content: center
+    height: auto
     // margin: auto
     // grid-auto-columns: max-content
     grid-template-columns: repeat(auto-fit, minmax(150px, 200px))
+    // grid-auto-rows: minmax(min-content, max-content)
+    // grid-template-rows: 200px
     @media only screen and (max-width: 1400px)
       grid-template-columns: repeat(3, minmax(150px, 200px))
+      // grid-auto-rows: minmax(min-content, max-content)
     @media only screen and (max-width: 700px)
       grid-template-columns: repeat(1, minmax(150px, 200px))
+      // grid-auto-rows: minmax(min-content, max-content)
       grid-gap: 20px
       // height: auto
     grid-gap: 30px
-    height: 200px
+    // height: 200px
+    label
+      height: 200px
 
     // .members
       grid-template-columns: repeat(5, auto)
@@ -321,7 +329,7 @@ label
   display: flex
   justify-content: center
   .description
-    width: 150px
+    width: 180px
     text-align: left
 
 .quantity
@@ -377,11 +385,89 @@ label
   justify-content: center
 
 .mapdiv
-	width	: 100vw
-	height	: 500px
+	width: 100vw
+	height: 50vh
+  justify-content: center
+
 
 #back
-  margin-top: 250px
+  margin-top: 50px
+  border: None
+  outline: None
+  font-size: 18px
+  @media only screen and (max-width: 700px)
+    margin-bottom: 10px
+  // margin-right: 30px
+
+.back
+  margin-right: 30px
+  @media only screen and (max-width: 700px)
+    margin-right: 0
 
 .totalDisplay
   color: $black
+
+#months
+  color: $black
+  height: 41px
+  width: 187px
+  margin-top: 20px
+  margin-left: 30px
+  background: white
+  border: none
+.selectMonth
+  .numPeople
+    display: flex
+    justify-content: center
+    .description
+      width: 280px
+      text-align: left
+
+
+#submitit
+  // margin-left: 30px
+  border: None
+  outline: None
+  font-size: 18px!important
+  color: white
+  background-color: $teal
+
+.tripDate
+  margin-top: 26px
+  height: 35px
+  color: $black
+
+input[type="date"]
+  &::-webkit-clear-button, &::-webkit-inner-spin-button
+    display: none
+  &::-webkit-calendar-picker-indicator
+    color: $black
+
+  text-transform: uppercase
+  appearance: none
+  -webkit-appearance: none
+  color: $black
+  // font-family: "Helvetica", arial, sans-serif
+  font-size: 18px
+  border: 1px solid $white
+  background: $white
+  padding: 5px
+  display: inline-block !important
+  visibility: visible !important
+  color: $black
+  box-shadow: none
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  border-radius: 4px
+
+/* Removes the spin button
+
+/* Always display the drop down caret
+
+/* A few custom styles for date inputs
+
+focus
+  color: #95a5a6
+  box-shadow: none
+  -webkit-box-shadow: none
+  -moz-box-shadow: none

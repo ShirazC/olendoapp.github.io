@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 sass.compile(dirname=('./static/sass/', './static/css'))
 
-tripSettings = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+tripSettings = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 regionPlace = "placeholder"
 countries = ['', '', '', '', '']
 
@@ -50,14 +50,29 @@ def setup():
             tripSettings[4] = '2'
         tripSettings[5] = '0'
         # return "hello"
-        return render_template("setup.html", background="none", step="results", number=tripSettings, name="Total")
-    elif request.form["step"] == "results":
-
-        # tripSettings[2] = (request.form['3'])
+        return render_template("setup.html", background="none", step="ifDates", number=tripSettings, name="Do you have dates for your trip?")
+    elif request.form["step"] == "ifDates":
         tripSettings[4] = (request.form['adultQuantity'])
         tripSettings[5] = (request.form['childQuantity'])
+        return render_template("setup.html", background="none", step="ifDates", number=tripSettings, name="Do you have dates for your trip?")
+    elif request.form["step"] == "dates":
+        tripSettings[6] = (request.form['6'])
+        if tripSettings[6] == 'Yes':
+            return render_template("setup.html", background="none", step="dates", number=tripSettings[6], name="When are you travelling?", description="We need the dates to offer real-time prices. You can change them after this setup")
+        elif tripSettings[6] == 'No':
+            return render_template("setup.html", background="none", step="dates", number=tripSettings[6], name="When would you like to go?")
+    elif request.form["step"] == "results":
+        if tripSettings[6] == 'Yes':
+            tripSettings[7] = (request.form['trip-start'])
+            tripSettings[8] = (request.form['trip-end'])
+        elif tripSettings[6] == 'No':
+            tripSettings[7] = (request.form['months'])
+            tripSettings[8] = (request.form['days'])
+        # tripSettings[7] = (request.form['7'])
+        # tripSettings[2] = (request.form['3'])
+
         # return "hello"
-        return render_template("setup.html", background="none", step="results", number=tripSettings, name="Total")
+        return render_template("setup.html", background="none", step="results", number=tripSettings, name="Itinerary")
 
 
 @app.after_request

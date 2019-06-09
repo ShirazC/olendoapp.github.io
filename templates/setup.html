@@ -13,7 +13,7 @@
         </div>
         <script src="/static/js/mapSetup.js"></script>
         <input type="hidden" name="step" value="tripType">
-        <input type="button" value="Submit" onclick="this.form.submit()" />
+        <input type="button" id="submitit" value="Submit" onclick="this.form.submit()" />
       </form>
     {% elif step == "tripType" %}
       <h2>{{ name }}</h2>
@@ -58,9 +58,11 @@
           </div>
         </div>
       <!-- Pick a lower limit: <input type="text" name="lowerlim"><br> -->
+      <div>
       <input type="hidden" name="step" value="occasion">
       <!-- <input type="submit" value="Next"> -->
       <input type="button" id="back" value="Back" onclick="window.history.back()" />
+      </div>
       </form>
     {% elif step == "occasion" %}
       <h2>{{ name }}</h2>
@@ -81,6 +83,15 @@
                 <h3>Birthday</h3>
               </div>
             </label>
+            {% if number == 'Solo' %}
+            <label>
+              <input type="radio" name="2" class='card-input-element' value="Business" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>Business</h3>
+            </div>
+            </label>
+            {% endif %}
             {% if number == 'Couple' %}
             <label>
               <input type="radio" name="2" class='card-input-element' value="Anniversary" onchange="this.form.submit()">
@@ -117,10 +128,10 @@
         <div class="wapper">
           <div class="setup-cards">
             <label>
-              <input type="radio" name="3" class='card-input-element' value="Vegitarian" onchange="this.form.submit()">
+              <input type="radio" name="3" class='card-input-element' value="Vegetarian" onchange="this.form.submit()">
               <div class="about-card">
                 <img src="./assets/img/upload.svg" alt="">
-                <h3>Vegitarian </h3>
+                <h3>Vegetarian </h3>
               </div>
             </label>
             <label>
@@ -131,13 +142,6 @@
               </div>
             </label>
             <label>
-              <input type="radio" name="3" class='card-input-element' value="Allergies" onchange="this.form.submit()">
-            <div class="about-card">
-              <img src="./assets/img/book.svg" alt="">
-              <h3>Allergies </h3>
-            </div>
-            </label>
-            <label>
               <input type="radio" name="3" class='card-input-element' value="No Red Meat" onchange="this.form.submit()">
             <div class="about-card">
               <img src="./assets/img/book.svg" alt="">
@@ -145,10 +149,17 @@
             </div>
             </label>
             <label>
-              <input type="radio" name="3" class='card-input-element' value="No Seafood" onchange="this.form.submit()">
+              <input type="radio" name="3" class='card-input-element' value="Halal" onchange="this.form.submit()">
             <div class="about-card">
               <img src="./assets/img/book.svg" alt="">
-              <h3>No Seafood</h3>
+              <h3>Halal</h3>
+            </div>
+            </label>
+            <label>
+              <input type="radio" name="3" class='card-input-element' value="Kosher" onchange="this.form.submit()">
+            <div class="about-card">
+              <img src="./assets/img/book.svg" alt="">
+              <h3>Kosher</h3>
             </div>
             </label>
             <label>
@@ -190,13 +201,117 @@
               <input type="button" value="+" class="plus">
             </div>
           </div>
-          <input type="button" value="Submit" onclick="this.form.submit()" />
+          <input type="button" class="back" id="back" value="Back" onclick="window.history.back()" />
+          <input type="button" id="submitit" value="Submit" onclick="this.form.submit()" />
         <!-- <input type="hidden" name="1" class='card-input-element' > -->
-        <input type="hidden" name="step" value="results">
+        <input type="hidden" name="step" value="ifDates">
         <!-- <input type="submit" value="Generate"> -->
-        <input type="button" value="Back" onclick="window.history.back()" />
-        </form>
 
+        </form>
+      {% elif step == "ifDates" %}
+        <h2>{{ name }}</h2>
+        <form action="{{ url_for('setup') }}" method="post">
+          <div class="wapper">
+            <div class="setup-cards">
+              <label>
+                <input type="radio" name="6" class='card-input-element' value="Yes" onchange="this.form.submit()">
+                <div class="about-card">
+                  <img src="./assets/img/upload.svg" alt="">
+                  <h3>Yes </h3>
+                </div>
+              </label>
+              <label>
+                <input type="radio" name="6" class='card-input-element' value="No" onchange="this.form.submit()">
+                <div class="about-card">
+                  <img src="./assets/img/customize.svg" alt="">
+                  <h3>No </h3>
+                </div>
+              </label>
+            </div>
+          </div>
+          <input type="hidden" name="step" value="dates">
+          <input type="button" id="back" value="Back" onclick="window.history.back()" />
+        </form>
+      {% elif step == "dates" %}
+        <h2>{{ name }}</h2>
+        <h4>{{ description }}</h4>
+        {% if number == 'Yes' %}
+          <form action="{{ url_for('setup') }}" method="post">
+            <div class="wapper">
+              <div class="numPeople">
+                <div class="description">
+                  <h3>Arrival:</h3>
+                </div>
+                <input type="date" class="tripDate" id="start" name="trip-start" placeholder="Choose a Date"
+       required="required">
+              </div>
+              <div class="numPeople">
+                <div class="description">
+                  <h3>Departure:</h3>
+                </div>
+                <input type="date" class="tripDate" id="end" name="trip-end" placeholder="Choose a Date"
+       required="required">
+              </div>
+            </div>
+            <input type="hidden" name="step" value="results">
+            <input type="button" class="back" id="back" value="Back" onclick="window.history.back()" />
+            <input type="button" id="submitit" value="Submit" onclick="this.form.submit()" />
+          </form>
+        {% elif number == 'No' %}
+        <form action="{{ url_for('setup') }}" method="post">
+          <div class="selectMonth">
+            <div class="numPeople">
+              <div class="description">
+                <h3>Month:</h3>
+              </div>
+              <select name="months" id="months"></select>
+              <script>
+                var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+                   function writeMonthOptions() {
+
+                        var myselect = document.getElementById("months"), year = new Date().getFullYear();
+                        var today = new Date();
+                        var optionValues;
+
+                        var gen = function (max) {
+                            var curMonth = today.getMonth();
+                            var curYear = year;  // presevere outer year value if you hava other use
+                            do {
+                                optionValues = months[curMonth] + ' ' + curYear;
+                                myselect.add(new Option(optionValues, optionValues), null);
+
+                                ++curMonth;
+
+                                // When months reach the 13th ele of months, advance to next year.
+                                if (curMonth === months.length) {
+                                    ++curYear;
+                                    curMonth = 0;
+                                }
+
+                                max++;
+                            } while (max < 12);
+                        }(0);
+                    }
+                  writeMonthOptions();
+              </script>
+            </div>
+            <div class="numPeople">
+              <div class="description">
+                <h3>Number of Days:</h3>
+              </div>
+              <div class="quantity buttons_added">
+                <input type="button" value="-" class="minus">
+                <input type="number" step="1" min="1" max="" name="days" value="2" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""             >
+                <input type="button" value="+" class="plus">
+              </div>
+            </div>
+          </div>
+          <input type="hidden" name="step" value="results">
+          <input type="button" class="back" id="back" value="Back" onclick="window.history.back()" />
+          <input type="button" id="submitit" value="Submit" onclick="this.form.submit()" />
+        </form>
+        {% endif %}
       {% elif step == "results" %}
         <h2>{{ name }}</h2>
         <div class="totalDisplay">

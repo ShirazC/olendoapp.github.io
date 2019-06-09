@@ -1,7 +1,8 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize * */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,900");
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 html {
-  font-family: Poppins-Regular;
+  font-family: Poppins-Regular !important;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
 
@@ -271,7 +272,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: #222;
   font-weight: bold;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins-Regular', sans-serif;
   font-weight: 900;
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07); }
 
@@ -415,13 +416,14 @@ section {
     text-align: center;
     font-size: 26px;
     color: #6D7278; }
-  .get_demo .submit {
-    height: 65px;
-    font-size: 26px;
-    padding: 10px 20px;
-    background-color: #68B0AB;
-    color: white;
-    border: none; }
+
+.submit {
+  height: 65px !important;
+  font-size: 26px !important;
+  padding: 10px 20px !important;
+  background-color: #68B0AB !important;
+  color: white !important;
+  border: none !important; }
 
 .main-nav {
   display: flex;
@@ -591,9 +593,9 @@ label {
   .wrapper .setup-cards {
     display: grid;
     justify-content: center;
+    height: auto;
     grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
-    grid-gap: 30px;
-    height: 200px; }
+    grid-gap: 30px; }
     @media only screen and (max-width: 1400px) {
       .wrapper .setup-cards {
         grid-template-columns: repeat(3, minmax(150px, 200px)); } }
@@ -601,6 +603,8 @@ label {
       .wrapper .setup-cards {
         grid-template-columns: repeat(1, minmax(150px, 200px));
         grid-gap: 20px; } }
+    .wrapper .setup-cards label {
+      height: 200px; }
     .wrapper .setup-cards p {
       color: #111;
       font-size: 26px !important; }
@@ -614,7 +618,7 @@ label {
   display: flex;
   justify-content: center; }
   .numPeople .description {
-    width: 150px;
+    width: 180px;
     text-align: left; }
 
 .quantity {
@@ -669,10 +673,81 @@ label {
 
 .mapdiv {
   width: 100vw;
-  height: 500px; }
+  height: 50vh;
+    height-justify-content: center; }
 
 #back {
-  margin-top: 250px; }
+  margin-top: 50px;
+  border: None;
+  outline: None;
+  font-size: 18px; }
+  @media only screen and (max-width: 700px) {
+    #back {
+      margin-bottom: 10px; } }
+
+.back {
+  margin-right: 30px; }
+  @media only screen and (max-width: 700px) {
+    .back {
+      margin-right: 0; } }
 
 .totalDisplay {
   color: #111; }
+
+#months {
+  color: #111;
+  height: 41px;
+  width: 187px;
+  margin-top: 20px;
+  margin-left: 30px;
+  background: white;
+  border: none; }
+
+.selectMonth .numPeople {
+  display: flex;
+  justify-content: center; }
+  .selectMonth .numPeople .description {
+    width: 280px;
+    text-align: left; }
+
+#submitit {
+  border: None;
+  outline: None;
+  font-size: 18px !important;
+  color: white;
+  background-color: #68B0AB; }
+
+.tripDate {
+  margin-top: 26px;
+  height: 35px;
+  color: #111; }
+
+input[type="date"] {
+  text-transform: uppercase;
+  appearance: none;
+  -webkit-appearance: none;
+  color: #111;
+  font-size: 18px;
+  border: 1px solid #fff;
+  background: #fff;
+  padding: 5px;
+  display: inline-block !important;
+  visibility: visible !important;
+  color: #111;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border-radius: 4px; }
+  input[type="date"]::-webkit-clear-button, input[type="date"]::-webkit-inner-spin-button {
+    display: none; }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #111; }
+
+/* Removes the spin button */
+/* Always display the drop down caret */
+/* A few custom styles for date inputs */
+focus {
+  color: #95a5a6;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none; }
