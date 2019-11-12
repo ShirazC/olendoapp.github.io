@@ -313,9 +313,43 @@
         </form>
         {% endif %}
       {% elif step == "results" %}
-        <h2>{{ name }}</h2>
+        <h2>{{ name }}: Foodie - Dinner</h2>
         <div class="totalDisplay">
-        Your results are: {{number}}.<br>
+        <!-- Your results are: {{number}}.<br>
+        Your json are: {{json}}.<br> -->
+        {% set numDays = json['unplannedDates']['days'] | int %}
+        {% for i in range(numDays) %}
+        <div class="itinerary-card">
+          <div class="itinerary-highlight-img">
+            <img src="https://images.getbento.com/accounts/492d6dba03bb5c6fce6354bece02dc20/media/images/27900Hero2.jpg?fit=max&w=1800&auto=format,compress" alt="" height="200" width="200">
+          </div>
+          <div class="itinerary-highlight-description">
+            <h3 class="itinerary-day">Day 1</h3>
+            <h3>Ramen - Daikaya</h3>
+            <p>Daikaya ramen (1F) offers Sapporo-style ramen, which is widely considered one of Japan’s most prominent and influential ramen styles. Sapporo style ramen is distinguished by its Chintan stock; a clear soup base that requires over 16 hours of careful preparation to achieve its delicate and complex depth. The stock contains chicken, pork, and beef. Our noodles are imported from Sapporo, Japan and made by Nishiyama Seimen Company according to the recipe we developed.</p>
+          </div>
+        </div>
+        <div class="itinerary-card">
+          <div class="itinerary-highlight-img">
+            <img src="http://www.karmamodernindian.com/img/about.jpg" alt="" height="200" width="200">
+          </div>
+          <div class="itinerary-highlight-description">
+            <h3 class="itinerary-day">Day 2</h3>
+            <h3>Indian - Karma Modern Indian</h3>
+            <p>Karma Modern Indian creatively reimagines classic Indian cuisine and flavors, using locally-sourced ingredients prepared with traditional and modern cooking methods. We aim to make Indian food more approachable by introducing the traditional cuisine with contemporary plating and forward-thinking flavor profiles. </p>
+          </div>
+        </div>
+        <div class="itinerary-card">
+          <div class="itinerary-highlight-img">
+            <img src="http://www.dasethiopian.com/wp-content/uploads/2014/06/039-e1403371003122.jpg" alt="" height="200" width="200">
+          </div>
+          <div class="itinerary-highlight-description">
+            <h3 class="itinerary-day">Day 3</h3>
+            <h3>Ethiopian - Das Ethiopian Cuisine</h3>
+            <p>Ethiopian cuisine is best known for its mixes and presentations of various seasoned meats, vegetables, and flavorful stews, served alongside a cultural stable bread injera. DAS’ menu features dishes from the traditional Ethiopian standards to unexpected new combinations like Eggplant and Carrot Wot. A dish made with eggplant in a tomato sauce, and Spinach and Rice, where vegetables are cooked with stewed tomatoes in rice. Classic stables include Collard Greens Gomen and Miser Wot, red lentils seasoned with Ethiopian herbs. Meat and vegetable dishes, lamb, chicken, beef and meat and vegetable combinations.</p>
+          </div>
+        </div>
+        {% endfor %}
         <!-- Your region is: {{ region }}. <br> -->
         </div>
     {% endif %}

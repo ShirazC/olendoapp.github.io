@@ -1,0 +1,23 @@
+{
+  "UnRegion": null,
+  "countries": [],
+  "haveTravelled": 0,
+  "travellingWith": null,
+  "ocassion": null,
+  "dietRestrictions": null,
+  "numPeople": {
+    "adults": 0,
+    "children": 0
+  },
+  "ifDates": 0,
+  "plannedDates": {
+    "start": null,
+    "end": null
+  },
+  "unplannedDates": {
+    "month": null,
+    "days": 0
+  },
+  "focus": null,
+  "popularSites": 0
+}
